@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd18f665749da5408e4fe3661cd6d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 6
   moveTarget: {fileID: 2039772150228674891}
   collidesWith:
     serializedVersion: 2
