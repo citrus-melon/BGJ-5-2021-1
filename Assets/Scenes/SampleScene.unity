@@ -3750,10 +3750,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Wrapper
       objectReference: {fileID: 0}
-    - target: {fileID: 2039772150638198181, guid: e6625ad2b3b2f414daa2bc00f5f871b5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4075076094494808253, guid: e6625ad2b3b2f414daa2bc00f5f871b5, type: 3}
       propertyPath: m_RootOrder
       value: 1
