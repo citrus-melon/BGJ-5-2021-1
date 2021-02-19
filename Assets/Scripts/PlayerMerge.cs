@@ -14,7 +14,12 @@ public class PlayerMerge : MonoBehaviour
         Collider2D other = Physics2D.OverlapPoint(transform.position, trigger);
         if(other && Vector2.Distance(other.transform.position, transform.position) <= triggerRadius) {
             if(other.gameObject == gameObject) return;
-            stage += other.GetComponent<PlayerMerge>().stage;
+            int otherStage = other.GetComponent<PlayerMerge>().stage;
+            if (otherStage == stage) {
+                stage ++;
+            } else {
+                stage = Mathf.Max(stage, otherStage);
+            }
             Destroy(other.transform.parent.gameObject);
             spriteRenderer.sprite = sprites[Mathf.Min(stage-1, 5)];
         }
