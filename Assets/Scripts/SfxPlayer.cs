@@ -6,6 +6,7 @@ public class SfxPlayer : MonoBehaviour
 {
     public AudioSource move;
     public AudioSource merge;
+    public AudioSource delete;
     public AudioSource win;
     public static SfxPlayer singleton;
 
@@ -24,8 +25,10 @@ public class SfxPlayer : MonoBehaviour
         soundID = Mathf.Max(sound, soundID);
     }
     private void LateUpdate() {
-        if (soundID == 3) {
+        if (soundID == 4) {
             win.Play();
+        } else if (soundID == 3) {
+            delete.Play();
         } else if (soundID == 2) {
             merge.Play();
         } else if (soundID == 1) {

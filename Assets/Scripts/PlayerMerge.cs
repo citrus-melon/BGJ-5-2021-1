@@ -17,10 +17,11 @@ public class PlayerMerge : MonoBehaviour
             int otherStage = other.GetComponent<PlayerMerge>().stage;
             if (otherStage == stage) {
                 stage ++;
+                SfxPlayer.singleton.queueSound(2);
             } else {
                 stage = Mathf.Max(stage, otherStage);
+                SfxPlayer.singleton.queueSound(3);
             }
-            SfxPlayer.singleton.queueSound(2);
             Destroy(other.transform.parent.gameObject);
             spriteRenderer.sprite = sprites[Mathf.Min(stage-1, 5)];
         }
