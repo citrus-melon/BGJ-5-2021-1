@@ -15,9 +15,11 @@ public class WinManager : MonoBehaviour
             if (!goal.fufilled) return;
         }
         winScreen.SetActive(true);
+        SfxPlayer.singleton.queueSound(3);
         PlayerMovement[] movementScripts = FindObjectsOfType<PlayerMovement>();
         foreach (PlayerMovement script in movementScripts) {
             script.enabled = false;
         }
+        this.gameObject.SetActive(false);
     }
 }

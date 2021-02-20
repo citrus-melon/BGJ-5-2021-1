@@ -39,11 +39,17 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveVertical() {
         Vector3 newTarget = moveTarget.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
-        if (!Physics2D.OverlapPoint(newTarget, collidesWith)) moveTarget.position = newTarget;
+        if (!Physics2D.OverlapPoint(newTarget, collidesWith)) {
+            moveTarget.position = newTarget;
+            SfxPlayer.singleton.queueSound(1);
+        }
     }
 
     void MoveHorizontal() {
         Vector3 newTarget = moveTarget.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
-        if (!Physics2D.OverlapPoint(newTarget, collidesWith)) moveTarget.position = newTarget;
+        if (!Physics2D.OverlapPoint(newTarget, collidesWith)) {
+            moveTarget.position = newTarget;
+            SfxPlayer.singleton.queueSound(1);
+        }
     }
 }
