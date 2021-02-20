@@ -324,7 +324,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294952000
-  m_fontColor: {r: 0.2509804, g: 0.7686275, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0.65198034, b: 0.9433962, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 2558936270714278122}
   - component: {fileID: 2558936270714278127}
   m_Layer: 5
-  m_Name: Level Selector Button
+  m_Name: Next Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

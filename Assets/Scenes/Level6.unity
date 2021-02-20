@@ -809,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 1777178317}
     - target: {fileID: 2293791706031752264, guid: c72752f428377014aaa73b1e6da27888, type: 3}
       propertyPath: m_text
-      value: LEVEL 05
+      value: LEVEL 06
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c72752f428377014aaa73b1e6da27888, type: 3}
