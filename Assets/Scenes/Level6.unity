@@ -476,6 +476,18 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1341328476}
+    - target: {fileID: 8111885577818449157, guid: f0e34da6183e3e44cb1cd5886a9ec4ed, type: 3}
+      propertyPath: m_Size.x
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111885577818449157, guid: f0e34da6183e3e44cb1cd5886a9ec4ed, type: 3}
+      propertyPath: m_Size.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111885577818449157, guid: f0e34da6183e3e44cb1cd5886a9ec4ed, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0e34da6183e3e44cb1cd5886a9ec4ed, type: 3}
 --- !u!4 &818265946 stripped
