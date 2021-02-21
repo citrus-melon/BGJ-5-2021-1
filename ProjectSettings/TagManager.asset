@@ -6,6 +6,7 @@ TagManager:
   tags:
   - music
   - sfx
+  - joystick
   layers:
   - Default
   - TransparentFX

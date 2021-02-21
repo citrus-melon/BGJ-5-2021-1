@@ -21,32 +21,35 @@ public class PlayerMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, moveTarget.position) > .05f) return;
 
-        if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f && Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
+        float vertical = JoystickManager.singleton.joystick.Vertical !=0 ? JoystickManager.singleton.joystick.Vertical: Mathf.Round(Input.GetAxisRaw("Vertical"));
+        float horizontal = JoystickManager.singleton.joystick.Horizontal !=0 ? JoystickManager.singleton.joystick.Horizontal: Mathf.Round(Input.GetAxisRaw("Horizontal"));
+
+        if (vertical != 0 && horizontal != 0) {
             if (diagonalHorizontal) {
-                MoveHorizontal();
+                MoveHorizontal(horizontal);
             } else {
-                MoveVertical();
+                MoveVertical(vertical);
             }
             diagonalHorizontal = !diagonalHorizontal;
         }
-        else if(Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f) {
-            MoveHorizontal();
+        else if(horizontal != 0) {
+            MoveHorizontal(horizontal);
         }
-        else if(Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1f) {
-            MoveVertical();
+        else if(vertical != 0) {
+            MoveVertical(vertical);
         }
     }
 
-    void MoveVertical() {
-        Vector3 newTarget = moveTarget.position + new Vector3(0f, Input.GetAxisRaw("Vertical"), 0f);
+    void MoveVertical(float input) {
+        Vector3 newTarget = moveTarget.position + new Vector3(0f, input, 0f);
         if (!Physics2D.OverlapPoint(newTarget, collidesWith)) {
             moveTarget.position = newTarget;
             SfxPlayer.singleton.queueSound(1);
         }
     }
 
-    void MoveHorizontal() {
-        Vector3 newTarget = moveTarget.position + new Vector3(Input.GetAxisRaw("Horizontal"), 0f, 0f);
+    void MoveHorizontal(float input) {
+        Vector3 newTarget = moveTarget.position + new Vector3(input, 0f, 0f);
         if (!Physics2D.OverlapPoint(newTarget, collidesWith)) {
             moveTarget.position = newTarget;
             SfxPlayer.singleton.queueSound(1);
