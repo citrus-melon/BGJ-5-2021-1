@@ -10,7 +10,7 @@ public class DeleteTile : MonoBehaviour
         Collider2D other = Physics2D.OverlapPoint(transform.position, trigger);
         if(other && Vector2.Distance(other.transform.position, transform.position) <= triggerRadius) {
             SfxPlayer.singleton.queueSound(3);
-            Destroy(other.transform.parent.gameObject);
+            Destroy(other.gameObject);
         }
     }
 }

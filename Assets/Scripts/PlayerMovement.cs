@@ -6,52 +6,52 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
-    public Transform moveTarget;
+    public float moveDelay = 1f;
+    private Vector3 moveTarget;
     public LayerMask collidesWith;
     private bool diagonalHorizontal = false;
+    private float timeToMove = 0;
     void Start()
     {
-        
+        moveTarget = transform.position;
+        timeToMove = moveDelay;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, moveTarget.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, moveTarget, moveSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, moveTarget.position) > .05f) return;
+        if (timeToMove > 0) {
+            if (Vector3.Distance(transform.position, moveTarget) < .05f) timeToMove -= Time.deltaTime;
+            return;
+        }
 
+        // Accept Input
         float vertical = JoystickManager.singleton.joystick.Vertical !=0 ? JoystickManager.singleton.joystick.Vertical: Mathf.Round(Input.GetAxisRaw("Vertical"));
         float horizontal = JoystickManager.singleton.joystick.Horizontal !=0 ? JoystickManager.singleton.joystick.Horizontal: Mathf.Round(Input.GetAxisRaw("Horizontal"));
+        
+        if (vertical == 0 && horizontal == 0) return;
 
         if (vertical != 0 && horizontal != 0) {
             if (diagonalHorizontal) {
-                MoveHorizontal(horizontal);
+                Move(horizontal, 0f);
             } else {
-                MoveVertical(vertical);
+                Move(0f, vertical);
             }
             diagonalHorizontal = !diagonalHorizontal;
         }
-        else if(horizontal != 0) {
-            MoveHorizontal(horizontal);
+        else {
+            Move(horizontal, vertical);
         }
-        else if(vertical != 0) {
-            MoveVertical(vertical);
-        }
+
+        timeToMove = moveDelay;
     }
 
-    void MoveVertical(float input) {
-        Vector3 newTarget = moveTarget.position + new Vector3(0f, input, 0f);
+    void Move(float x, float y) {
+        Vector3 newTarget = moveTarget + new Vector3(x, y, 0f);
         if (!Physics2D.OverlapPoint(newTarget, collidesWith)) {
-            moveTarget.position = newTarget;
-            SfxPlayer.singleton.queueSound(1);
-        }
-    }
-
-    void MoveHorizontal(float input) {
-        Vector3 newTarget = moveTarget.position + new Vector3(input, 0f, 0f);
-        if (!Physics2D.OverlapPoint(newTarget, collidesWith)) {
-            moveTarget.position = newTarget;
+            moveTarget = newTarget;
             SfxPlayer.singleton.queueSound(1);
         }
     }

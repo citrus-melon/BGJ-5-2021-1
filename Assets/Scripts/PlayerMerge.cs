@@ -22,7 +22,7 @@ public class PlayerMerge : MonoBehaviour
                 stage = Mathf.Max(stage, otherStage);
                 SfxPlayer.singleton.queueSound(3);
             }
-            Destroy(other.transform.parent.gameObject);
+            Destroy(other.gameObject);
             spriteRenderer.sprite = sprites[Mathf.Min(stage-1, 5)];
         }
     }
